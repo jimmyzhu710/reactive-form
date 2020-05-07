@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Project Name</label>
+                <input type="text" id="name" formControlName="name" class="form-control">
+                <span class="help-block"
+                    *ngIf="!signupForm.get('name').valid && signupForm.get('name').touched">
+                    <span class="help-block" *ngIf="signupForm.get('name')?.errors?.nameIsForbiddenAnsync">Please enter a valid name(Asnyc)</span>
+                    <span class="help-block" *ngIf="signupForm.get('name')?.errors?.nameIsForbidden">Please enter a valid name</span>
+                    <span *ngIf="signupForm.get('name')?.errors?.required" class="help-block">This field is required</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="mail">Mail</label>
+                <input type="text" id="mail" formControlName="mail" class="form-control">
+                <span *ngIf="!signupForm.get('mail').valid && signupForm.get('mail').touched"
+                class="help-block">Please enter a valid email!</span>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" class="form-control">
+                    <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

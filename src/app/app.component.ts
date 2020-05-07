@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
     const promise = new Promise<any>((resolve, reject) => {
       setTimeout(() => {
         if (control.value === 'test@test.com') {
-          resolve({ 'emailIsForbiddent': true });
+          resolve({ 'emailIsForbidden': true });
         } else {
           resolve(null);
         }
